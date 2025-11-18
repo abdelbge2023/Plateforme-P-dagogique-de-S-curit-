@@ -783,6 +783,132 @@
             to { transform: translateX(0); opacity: 1; }
         }
 
+        /* STYLES POUR LES SCÉNARIOS AMÉLIORÉS */
+        .scenarios-intro {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 6px solid var(--info);
+        }
+
+        .learning-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .scenario-subtitle {
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .scenario-options-enhanced {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .scenario-option-enhanced {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .scenario-option-enhanced:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .scenario-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .scenario-content h4 {
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+            font-size: 1.3rem;
+        }
+
+        .scenario-description {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .scenario-details {
+            margin-top: 20px;
+        }
+
+        .detail-item {
+            margin-bottom: 15px;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .scenario-details ul {
+            padding-left: 20px;
+            color: #7f8c8d;
+        }
+
+        .scenario-details li {
+            margin-bottom: 5px;
+        }
+
+        .scenario-meta {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .meta-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .meta-label {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.9rem;
+        }
+
+        .meta-value {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
         /* RESPONSIVE DESIGN */
         @media (max-width: 1200px) {
             .security-dashboard {
@@ -799,6 +925,10 @@
             
             .tab-btn {
                 min-width: auto;
+            }
+            
+            .scenario-options-enhanced {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -834,6 +964,11 @@
             .vulnerability-controls,
             .logs-controls-horizontal {
                 flex-direction: column;
+            }
+            
+            .learning-stats {
+                flex-direction: column;
+                gap: 20px;
             }
         }
 
@@ -1546,42 +1681,243 @@
         </div>
     </div>
 
-    <!-- MODAL SCÉNARIOS PÉDAGOGIQUES -->
+    <!-- MODAL SCÉNARIOS PÉDAGOGIQUES AMÉLIORÉ -->
     <div id="scenarios-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>🎯 Centre de Scénarios Pédagogiques</h2>
+                <h2>🎯 Centre de Scénarios Pédagogiques Complet</h2>
                 <span class="close" onclick="pedagogicalModule.closeScenarios()">&times;</span>
             </div>
             <div class="modal-body">
+                <div class="scenarios-intro">
+                    <h3>🚀 Bienvenue dans le Centre de Formation Pratique</h3>
+                    <p>Ces scénarios vous permettent de développer vos compétences en cybersécurité à travers des simulations réalistes et progressives. Chaque scénario est conçu pour vous préparer à des situations réelles de cybersécurité.</p>
+                    
+                    <div class="learning-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">8</span>
+                            <span class="stat-label">Scénarios Disponibles</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">4</span>
+                            <span class="stat-label">Niveaux de Difficulté</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">25+</span>
+                            <span class="stat-label">Compétences à Acquérir</span>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="scenarios-list" id="scenarios-list">
-                    <div class="scenario-details">
-                        <h3>Scénarios Pédagogiques Disponibles</h3>
-                        <p>Sélectionnez un scénario pour commencer votre apprentissage pratique :</p>
+                    <h3>🎯 Scénarios Pédagogiques Disponibles</h3>
+                    <p class="scenario-subtitle">Sélectionnez un scénario pour commencer votre apprentissage pratique :</p>
+                    
+                    <div class="scenario-options-enhanced">
+                        <!-- SCÉNARIO 1 - ANALYSE DE LOGS -->
+                        <div class="scenario-option-enhanced" onclick="pedagogicalModule.startScenario(1)">
+                            <div class="scenario-icon">🔍</div>
+                            <div class="scenario-content">
+                                <h4>Analyse de Logs de Sécurité</h4>
+                                <p class="scenario-description">Apprenez à identifier les activités suspectes dans les journaux système et à détecter les indicateurs de compromission (IoC).</p>
+                                
+                                <div class="scenario-details">
+                                    <div class="detail-item">
+                                        <span class="detail-label">📊 Objectifs pédagogiques:</span>
+                                        <ul>
+                                            <li>Comprendre les différents formats de logs (syslog, Windows Event Logs)</li>
+                                            <li>Identifier les patterns d'attaque courants</li>
+                                            <li>Utiliser grep, awk et autres outils d'analyse</li>
+                                            <li>Générer des rapports d'analyse professionnels</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="detail-item">
+                                        <span class="detail-label">🛠️ Outils utilisés:</span>
+                                        <ul>
+                                            <li>Éditeur de texte avancé (VS Code, Notepad++)</li>
+                                            <li>Outils de ligne de commande (grep, awk, sed)</li>
+                                            <li>Visualiseur de logs intégré</li>
+                                            <li>Outil d'analyse de patterns</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="scenario-meta">
+                                        <div class="meta-item">
+                                            <span class="meta-label">⏱️ Durée estimée:</span>
+                                            <span class="meta-value">45-60 minutes</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="meta-label">🎯 Difficulté:</span>
+                                            <span class="meta-value"><span class="difficulty-badge easy">Facile</span></span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="meta-label">📊 Prérequis:</span>
+                                            <span class="meta-value">Aucun</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="meta-label">🎓 Compétences:</span>
+                                            <span class="meta-value">4 compétences</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         
-                        <div class="scenario-options">
-                            <div class="scenario-option" onclick="pedagogicalModule.startScenario(1)">
-                                <h4>🔍 Analyse de Logs de Sécurité</h4>
-                                <p>Apprenez à identifier les activités suspectes dans les journaux système</p>
-                                <span class="difficulty-badge easy">Facile</span>
+                        <!-- SCÉNARIO 2 - CONFIGURATION PAREFEU -->
+                        <div class="scenario-option-enhanced" onclick="pedagogicalModule.startScenario(2)">
+                            <div class="scenario-icon">🛡️</div>
+                            <div class="scenario-content">
+                                <h4>Configuration de Pare-feu</h4>
+                                <p class="scenario-description">Configurez un pare-feu pour protéger un réseau d'entreprise contre les menaces externes et internes.</p>
+                                
+                                <div class="scenario-details">
+                                    <div class="detail-item">
+                                        <span class="detail-label">📊 Objectifs pédagogiques:</span>
+                                        <ul>
+                                            <li>Comprendre les règles de pare-feu et leur priorité</li>
+                                            <li>Configurer les politiques de sécurité réseau</li>
+                                            <li>Implémenter le principe du moindre privilège</li>
+                                            <li>Surveiller et analyser le trafic réseau</li>
+                                            <li>Répondre aux incidents de sécurité réseau</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="detail-item">
+                                        <span class="detail-label">🛠️ Outils utilisés:</span>
+                                        <ul>
+                                            <li>Interface de gestion de pare-feu simulée</li>
+                                            <li>Outil d'analyse de trafic réseau</li>
+                                            <li>Générateur de règles de sécurité</li>
+                                            <li>Simulateur d'attaques réseau</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="scenario-meta">
+                                        <div class="meta-item">
+                                            <span class="meta-label">⏱️ Durée estimée:</span>
+                                            <span class="meta-value">60-90 minutes</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="meta-label">🎯 Difficulté:</span>
+                                            <span class="meta-value"><span class="difficulty-badge medium">Moyen</span></span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="meta-label">📊 Prérequis:</span>
+                                            <span class="meta-value">Bases réseau TCP/IP</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="meta-label">🎓 Compétences:</span>
+                                            <span class="meta-value">5 compétences</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            
-                            <div class="scenario-option" onclick="pedagogicalModule.startScenario(2)">
-                                <h4>🛡️ Configuration de Pare-feu</h4>
-                                <p>Configurez un pare-feu pour protéger un réseau d'entreprise</p>
-                                <span class="difficulty-badge medium">Moyen</span>
+                        </div>
+                        
+                        <!-- SCÉNARIO 3 - RÉPONSE RANSOMWARE -->
+                        <div class="scenario-option-enhanced" onclick="pedagogicalModule.startScenario(3)">
+                            <div class="scenario-icon">🚨</div>
+                            <div class="scenario-content">
+                                <h4>Réponse à Incident Ransomware</h4>
+                                <p class="scenario-description">Gérez une attaque par ransomware sur un réseau critique et apprenez les procédures de réponse aux incidents.</p>
+                                
+                                <div class="scenario-details">
+                                    <div class="detail-item">
+                                        <span class="detail-label">📊 Objectifs pédagogiques:</span>
+                                        <ul>
+                                            <li>Identifier les signes d'une infection ransomware</li>
+                                            <li>Contenir la propagation de la menace</li>
+                                            <li>Analyser l'impact sur les systèmes et données</li>
+                                            <li>Éradiquer complètement la menace</li>
+                                            <li>Récupérer les systèmes à partir de sauvegardes</li>
+                                            <li>Documenter l'incident pour amélioration continue</li>
+                                            <li>Renforcer les défenses contre de futures attaques</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="detail-item">
+                                        <span class="detail-label">🛠️ Outils utilisés:</span>
+                                        <ul>
+                                            <li>Outil d'analyse de malware</li>
+                                            <li>Système de sauvegarde et restauration</li>
+                                            <li>Plateforme de gestion d'incidents</li>
+                                            <li>Scanner de vulnérabilités</li>
+                                            <li>Outil de forensic numérique</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="scenario-meta">
+                                        <div class="meta-item">
+                                            <span class="meta-label">⏱️ Durée estimée:</span>
+                                            <span class="meta-value">90-120 minutes</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="meta-label">🎯 Difficulté:</span>
+                                            <span class="meta-value"><span class="difficulty-badge hard">Difficile</span></span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="meta-label">📊 Prérequis:</span>
+                                            <span class="meta-value">Scénarios 1 & 2 complétés</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="meta-label">🎓 Compétences:</span>
+                                            <span class="meta-value">7 compétences</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            
-                            <div class="scenario-option" onclick="pedagogicalModule.startScenario(3)">
-                                <h4>🚨 Réponse à Incident Ransomware</h4>
-                                <p>Gérez une attaque par ransomware sur un réseau critique</p>
-                                <span class="difficulty-badge hard">Difficile</span>
-                            </div>
-                            
-                            <div class="scenario-option" onclick="pedagogicalModule.startScenario(4)">
-                                <h4>🔐 Audit de Sécurité des Mots de Passe</h4>
-                                <p>Évaluez et améliorez la politique de mots de passe d'une organisation</p>
-                                <span class="difficulty-badge medium">Moyen</span>
+                        </div>
+                        
+                        <!-- SCÉNARIO 4 - AUDIT MOTS DE PASSE -->
+                        <div class="scenario-option-enhanced" onclick="pedagogicalModule.startScenario(4)">
+                            <div class="scenario-icon">🔐</div>
+                            <div class="scenario-content">
+                                <h4>Audit de Sécurité des Mots de Passe</h4>
+                                <p class="scenario-description">Évaluez et améliorez la politique de mots de passe d'une organisation selon les meilleures pratiques.</p>
+                                
+                                <div class="scenario-details">
+                                    <div class="detail-item">
+                                        <span class="detail-label">📊 Objectifs pédagogiques:</span>
+                                        <ul>
+                                            <li>Analyser les politiques de mots de passe existantes</li>
+                                            <li>Tester la résistance des mots de passe avec des outils spécialisés</li>
+                                            <li>Identifier les comptes à haut risque</li>
+                                            <li>Implémenter l'authentification multi-facteurs (MFA)</li>
+                                            <li>Élaborer des recommandations d'amélioration</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="detail-item">
+                                        <span class="detail-label">🛠️ Outils utilisés:</span>
+                                        <ul>
+                                            <li>Outil d'audit de mots de passe</li>
+                                            <li>Testeur de force de mots de passe</li>
+                                            <li>Plateforme de gestion des identités</li>
+                                            <li>Solution d'authentification multi-facteurs</li>
+                                            <li>Générateur de politiques de sécurité</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="scenario-meta">
+                                        <div class="meta-item">
+                                            <span class="meta-label">⏱️ Durée estimée:</span>
+                                            <span class="meta-value">60-75 minutes</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="meta-label">🎯 Difficulté:</span>
+                                            <span class="meta-value"><span class="difficulty-badge medium">Moyen</span></span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="meta-label">📊 Prérequis:</span>
+                                            <span class="meta-value">Scénario 1 complété</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="meta-label">🎓 Compétences:</span>
+                                            <span class="meta-value">5 compétences</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
